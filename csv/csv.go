@@ -1,4 +1,4 @@
-package localutils
+package csv
 
 import (
 	"encoding/csv"
