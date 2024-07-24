@@ -32,6 +32,7 @@ func EncodeCSV(columns []string, rows []map[string]string, writer io.Writer) (er
 func CSVToMap(reader io.Reader) []map[string]string {
 	r := csv.NewReader(reader)
 	r.LazyQuotes = true
+	r.FieldsPerRecord = -1
 	rows := []map[string]string{}
 	var header []string
 	for {
