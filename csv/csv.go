@@ -7,7 +7,7 @@ import (
 	"log"
 )
 
-//EncodeCSV encodes slice of maps to a csv file
+// EncodeCSV encodes slice of maps to a csv file
 func EncodeCSV(columns []string, rows []map[string]string, writer io.Writer) (err error) {
 	w := csv.NewWriter(writer)
 	if err = w.Write(columns); err != nil {
@@ -31,6 +31,7 @@ func EncodeCSV(columns []string, rows []map[string]string, writer io.Writer) (er
 // CSVToMap converts a csv file to a slice of maps
 func CSVToMap(reader io.Reader) []map[string]string {
 	r := csv.NewReader(reader)
+	r.LazyQuotes = true
 	rows := []map[string]string{}
 	var header []string
 	for {
