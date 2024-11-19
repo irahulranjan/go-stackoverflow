@@ -30,9 +30,14 @@ func EncodeCSV(columns []string, rows []map[string]string, writer io.Writer) (er
 
 // CSVToMap converts a csv file to a slice of maps
 func CSVToMap(reader io.Reader) []map[string]string {
+	return CSVToMapWithSeparator(reader, ',')
+}
+
+func CSVToMapWithSeparator(reader io.Reader, separator rune) []map[string]string {
 	r := csv.NewReader(reader)
 	r.LazyQuotes = true
 	r.FieldsPerRecord = -1
+	r.Comma = separator
 	rows := []map[string]string{}
 	var header []string
 	for {
