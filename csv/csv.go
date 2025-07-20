@@ -60,3 +60,14 @@ func CSVToMapWithSeparator(reader io.Reader, separator rune) []map[string]string
 	}
 	return rows
 }
+
+// Contains checks if an item is present in a list of items using generics.
+// It works with any comparable type (strings, numbers, booleans, etc.).
+func Contains[T comparable](list []T, item T) bool {
+	for _, v := range list {
+		if v == item {
+			return true
+		}
+	}
+	return false
+}
